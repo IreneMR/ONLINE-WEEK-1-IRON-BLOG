@@ -1,0 +1,41 @@
+class Post
+
+attr_accessor :titulo, :fecha, :texto
+def initialize(titulo, fecha, texto)
+@titulo = titulo
+@fecha = fecha 
+@texto = texto
+end
+
+def texto_post
+puts "#{@titulo} \n ------------- \n #{@fecha}\n #{@texto} \n *************"
+end
+
+end
+
+post1=Post.new "Mi primer post" ,"12/04/15", "Bienvenido a mi primer post"
+post2=Post.new "Mi segundo post", "15/04/15", "Bienvenido a mi segundo post"
+
+class Blog
+def initialize
+@myfirstBlog = []
+end
+
+def genericoPost(post1, post2)
+  @myfirstBlog.push(post1, post2)
+end
+
+def imprimirBlog
+  @myfirstBlog.each{ |x| x.texto_post }
+end
+
+
+def ordenarPost
+@myfirstBlog.sort {|a,b| b.date <=> a.date} 
+end 
+end
+
+myBlog = Blog.new
+myBlog.ordenarPost
+myBlog.genericoPost(post1, post2)
+myBlog.imprimirBlog
